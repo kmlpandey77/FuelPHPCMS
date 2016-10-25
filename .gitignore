@@ -1,0 +1,2 @@
+.gitignore
+fuel/app/config/development/db.php
