@@ -34,4 +34,39 @@ class Model_Page extends \Orm\Model_Soft
 		return $val;
 	}
 
+	public static function getMenu($value = 'main_menu')
+	{
+		$pages = Model_Page::query()->select('id', 'slug', 'title')->where('position','IN', array(1))->get();
+
+		$menus = array();
+
+		foreach ($pages as $page) {
+			if($page->slug == 'home')
+				$link = Uri::create('/');
+			else
+				$link = Uri::create($page->slug.'.html');
+
+			$menus[$link] = $page->title;
+		}
+
+		return $menus;
+
+	}
+
+	public static function getRoute()
+	{
+		$pages = Model_Page::query()->select('id', 'slug', 'title')->where('position','IN', array(1))->get();
+
+		$routes = array();
+
+		foreach ($pages as $page) {
+			$routes[$page->slug] = 'public/view/'.$page->slug;
+		}
+
+		Debug::dump($routes);exit;
+
+		return $routes;
+
+	}
+
 }

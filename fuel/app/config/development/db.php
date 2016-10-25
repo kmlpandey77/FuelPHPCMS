@@ -6,11 +6,9 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=localhost;dbname=test_db',
+			'dsn'        => 'mysql:host=localhost;dbname=fuel_dev',
 			'username'   => 'root',
-			'password'   => 'root@123',
+			'password'   => 'root',
 		),
 	),
 );
-
-/* End of development/db.php */
