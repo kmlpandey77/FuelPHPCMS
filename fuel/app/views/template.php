@@ -3,13 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
-	<?php echo Asset::css('bootstrap.css'); ?>
+	<?php echo Asset::css(array('bootstrap.css','cropper.min.css')); ?>
 	<style>
 		body { margin: 50px; }
 	</style>
 	<?php echo Asset::js(array(
 		'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js',
 		'bootstrap.js',
+		'cropper.min.js',
 	)); ?>
 	<script>
 		$(function(){ $('.topbar').dropdown(); });
@@ -17,6 +18,7 @@
 </head>
 <body>
 
+<?php /*
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -38,11 +40,12 @@
 			</div>
 		</div>
 	</div>
+	*/ ?>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1><?php echo $title; ?></h1>
+				<h1><?php //echo $title; ?></h1>
 				<hr>
 <?php if (Session::get_flash('success')): ?>
 				<div class="alert alert-success alert-dismissable">
@@ -66,7 +69,8 @@
 			</div>
 		</div>
 		<hr/>
-		<footer class="text-center">Copyright &copy; ABCD Company, All right reserve.</footer>
+		<?php /*
+		<footer class="text-center">Copyright &copy; ABCD Company, All right reserve.</footer>*/ ?>
 	</div>
 </body>
 </html>

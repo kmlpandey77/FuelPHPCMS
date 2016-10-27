@@ -5,7 +5,7 @@ class Controller_Base extends Controller_Template
 	public function before()
 	{
 		parent::before();
-
+		
 		if(!File::exists(APPPATH . 'INSTALLATION_DISABLED')){
 			Response::redirect('install');
 		}
