@@ -20,6 +20,11 @@ class Controller_Public extends Controller_Base
 		$this->template->content = View::forge('pages/home');
 	}
 
+	public function action_upload()
+	{
+		var_dump(Input::file('croppedImage'));exit;
+	}
+
 	public function action_view($slug)
 	{
 		Debug::dump(slug);exit;
