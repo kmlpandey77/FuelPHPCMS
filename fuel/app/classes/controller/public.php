@@ -12,6 +12,8 @@
  * The Public Controller.
  *
  */
+
+
 class Controller_Public extends Controller_Base
 {
 	public function action_index()
@@ -22,7 +24,19 @@ class Controller_Public extends Controller_Base
 
 	public function action_upload()
 	{
-		var_dump(Input::file('croppedImage'));exit;
+		$path  = DOCROOT . 'assets/uploads/';
+		$img = Input::post('cropedimage');
+
+		list($type, $data) = explode(';', $img);
+		list(, $data)      = explode(',', $data);
+		$data = base64_decode($data);
+
+		// file_put_contents('/tmp/image.png', $data);
+		
+		file_put_contents($path.'test.jpg', $data);
+
+		exit(var_dump($file));
+		
 	}
 
 	public function action_view($slug)

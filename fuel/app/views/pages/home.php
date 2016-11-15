@@ -61,26 +61,11 @@
       })
       $(document).on('click', '#btn_crop', function () {
 			$('#crop_modal').modal('hide');
-			cropper.getCroppedCanvas().toBlob(function (blob) {
-			  var formData = new FormData();
-
-			  formData.append('croppedImage', blob);
-			  // console.log(blob);
-
-			  // Use `jQuery.ajax` method
-			  $.ajax(url, {
-			    type: "POST",
-			    data: formData,
-			    processData: false,
-			    contentType: false,
-			    success: function () {
-			      console.log('Upload success');
-			    },
-			    error: function () {
-			      console.log('Upload error');
-			    }
-			  });
-			});			
+			cropedimage = cropper.getCroppedCanvas().toDataURL('image/jpeg');
+			$.ajax(url,{
+				data:{cropedimage:cropedimage},
+				type:'post',				
+			})
 		});
     });
 
