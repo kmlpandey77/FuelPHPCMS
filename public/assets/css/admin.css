@@ -1,0 +1,19 @@
+#ajax_pagination.pagination{
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+.grid_order_by{
+    background: url(../img/sort_both.png) no-repeat center right;
+    cursor: pointer;
+}
+.grid_order_by_asc{
+    background: url(../img/sort_asc.png) no-repeat center right;    
+}
+.grid_order_by_desc{
+    background: url(../img/sort_desc.png) no-repeat center right;    
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ffd635;
+}

@@ -1,45 +1,47 @@
-<h2>Listing Pages</h2>
-<br>
-<?php if ($pages): ?>
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Slug</th>
-			<th>Image</th>
-			<th>Overview</th>
-			<th>Details</th>
-			<th>Position</th>
-			<th>Order by</th>
-			<th>Deleted at</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-<?php foreach ($pages as $item): ?>		<tr>
+<?php
+echo Html::anchor('admin/page/create', '<i class="glyphicon glyphicon-plus"></i> Add New Page', array(
+    'class' => 'btn btn-success btn-sm js-modal-call'
+        )
+);
+?>
 
-			<td><?php echo $item->title; ?></td>
-			<td><?php echo $item->slug; ?></td>
-			<td><?php echo $item->image; ?></td>
-			<td><?php echo $item->overview; ?></td>
-			<td><?php echo $item->details; ?></td>
-			<td><?php echo $item->position; ?></td>
-			<td><?php echo $item->order_by; ?></td>
-			<td><?php echo $item->deleted_at; ?></td>
-			<td>
-				<?php echo Html::anchor('admin/pages/view/'.$item->id, 'View'); ?> |
-				<?php echo Html::anchor('admin/pages/edit/'.$item->id, 'Edit'); ?> |
-				<?php echo Html::anchor('admin/pages/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
+<?=
+Form::button('filter-trigger', 'Filter', array(
+    'class' => 'btn btn-primary btn-sm',
+    'data-toggle' => 'collapse',
+    'data-target' => '#filter',
+        )
+);
+?>
 
-			</td>
-		</tr>
-<?php endforeach; ?>	</tbody>
-</table>
+<div id="filter" class="filter collapse">
+    <hr />
 
-<?php else: ?>
-<p>No Pages.</p>
+    <div class="row">
+        <div class="col-sm-3">
+            <?=
+            Form::input('title', '', array(
+                'class' => 'form-control grid_search',
+                'placeholder' => 'Title',
+                    )
+            );
+            ?>
+        </div>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('admin/pages/create', 'Add new Page', array('class' => 'btn btn-success')); ?>
+        <div class="col-sm-3">
+            <?=
+            Form::input('url_title', '', array(
+                'class' => 'form-control grid_search',
+                'placeholder' => 'Url Title',
+                    )
+            );
+            ?>
+        </div>
 
-</p>
+    </div>
+
+</div>
+<div id="pagesDiv" class="datagrid-container">
+    <div id="loadingDiv" style="text-align: center;"><span class="glyphicon glyphicon-refresh spinning"></span> Loading...</div>
+    <script>initView('admin/pages/grid', 'pageLink')</script>
+</div>
