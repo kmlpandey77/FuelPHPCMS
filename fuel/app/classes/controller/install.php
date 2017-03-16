@@ -121,7 +121,7 @@ return array(
 	{
 		if(Input::method() == 'POST'){
 			Migrate::version(0);
-			Migrate::latest();			
+			Migrate::current();			
 
 
 			$username = Input::post('username');
